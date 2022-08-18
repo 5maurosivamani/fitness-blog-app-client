@@ -1,0 +1,60 @@
+.create__new__blog {
+  background: rgba(0, 37, 35, 0.8);
+  height: 100%;
+  width: 100%;
+  padding: 1rem 4rem;
+}
+
+.create__new__blog-container {
+  /* margin: 1rem 4rem; */
+  background-color: #fff;
+  min-height: calc(100vh - 2rem);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 1.5rem;
+  top: 2.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn i {
+  font-size: 1.5rem;
+  color: rgba(255, 0, 0, 0.9);
+}
+
+.create__new__blog-container_content {
+  padding: 1rem 2rem;
+}
+
+.create__new__blog-container_content .page__heading {
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.create__new__blog-container_content form {
+  width: 60%;
+  margin: 2rem auto 0;
+}
+
+@media screen and (max-width: 700px) {
+  .create__new__blog {
+    padding: 1rem;
+  }
+  .create__new__blog-container {
+    margin: 1rem;
+  }
+  .create__new__blog-container_content form {
+    width: 95%;
+  }
+}
+
+.create__new__blog-container_content input {
+  font-size: 16px;
+}
+
+.create__new__blog-container_content .Blog__button {
+  margin-top: 0;
+}

@@ -1,0 +1,24 @@
+.Login {
+  background: var(--home-gradient-bg);
+  padding-bottom: 2rem;
+  min-height: 100vh;
+}
+
+.Login__container {
+  margin: 5rem 8rem;
+  padding: 3rem;
+  width: 500px;
+  /* border-top-left-radius: 4px;
+  border-top-right-radius: 4px; */
+  border-radius: 5px;
+  /* background: linear-gradient(180deg, #e9ece2 0%, rgba(107, 150, 13, 0) 100%); */
+  background-color: var(--text-color);
+}
+
+@media screen and (max-width: 700px) {
+  .Login__container {
+    width: 90%;
+    padding: 2rem;
+    margin: 2rem auto;
+  }
+}

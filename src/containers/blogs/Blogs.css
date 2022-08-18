@@ -1,0 +1,49 @@
+.Blogs {
+  position: relative;
+}
+.Blogs .Header {
+  background: var(--home-gradient-bg);
+}
+
+.Blogs__content {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 6rem;
+  background-color: var(--primary-color);
+}
+.Blogs__content-container {
+  min-height: 100vh;
+  background-color: var(--text-color);
+  position: relative;
+}
+
+.Blogs_content-container_posts {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--text-color);
+  padding: 1rem 3rem;
+}
+
+.page__heading {
+  font-family: "Saira";
+  font-style: italic;
+  font-weight: 600;
+  font-size: 40.1879px;
+  line-height: 56px;
+
+  color: var(--primary-color);
+  border-bottom: 0.5px solid rgb(206, 205, 205);
+}
+
+@media screen and (max-width: 700px) {
+  .Blogs__content {
+    padding: 1rem 1rem;
+  }
+  .Blogs_content-container_posts {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.Blogs .success__alert {
+  position: fixed;
+}

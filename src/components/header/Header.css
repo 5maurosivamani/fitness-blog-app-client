@@ -1,0 +1,305 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,400;0,600;0,900;1,400;1,600;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap");
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  font-family: "Teko";
+  position: relative;
+}
+
+.Header__logo {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.Header__links ul {
+  list-style: none;
+}
+
+.Header__links ul li {
+  display: inline-block;
+}
+
+.Header__links ul li .register,
+.Header__links ul li .login {
+  display: none;
+}
+
+.Header__links ul li.register a {
+  text-decoration: none;
+  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0% 100%);
+  background: var(--text-color);
+  padding: 0.4rem 2rem;
+
+  color: var(--header-action-text-color);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.Header__links ul li a {
+  text-decoration: none;
+  display: block;
+  padding: 1rem 1rem;
+
+  font-family: "Saira", sans-serif;
+  /* font-style: italic; */
+  color: var(--text-color);
+}
+
+.Header__links ul li a::after {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 0%;
+  background: var(--primary-color);
+  transition: 0.2s;
+}
+
+.Header__links ul li:hover > a::after {
+  width: 100%;
+  transition: 0.5s;
+}
+.Header__actions .cross-style {
+  display: flex;
+  align-items: center;
+}
+.Header__actions .cross-style a {
+  display: block;
+  text-decoration: none;
+  clip-path: polygon(16% 0, 100% 0%, 86% 100%, 0% 100%);
+  background: var(--text-color);
+  padding: 0.4rem 2rem;
+
+  color: var(--header-action-text-color);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.Header__actions .cross-style a:hover {
+  background: var(--header-action-text-color);
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+.Handburger__Menu {
+  color: var(--text-color);
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 1rem;
+
+  display: none;
+}
+
+/* .Handburger__Menu:hover + ul {
+  display: block;
+} */
+
+.Ham__User .userProfile {
+  display: none;
+}
+@media screen and (max-width: 980px) {
+  .Handburger__Menu {
+    display: block;
+  }
+
+  .Header__links {
+    position: relative;
+  }
+
+  .Header__links ul {
+    position: absolute;
+    background-color: var(--header-action-text-color);
+    padding: 1rem 1.8rem;
+    /* padding-left: 1rem; */
+    left: -2.5rem;
+    top: 4rem;
+    z-index: 1000;
+
+    display: none;
+  }
+
+  .Header__links ul.active {
+    display: block;
+  }
+
+  .Header__links ul li a {
+    padding: 0.3rem 0;
+    font-style: normal;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .Header__links ul li .register,
+  .Header__links ul li .login {
+    display: block;
+  }
+
+  .Header__links ul li.register:hover > a::after {
+    width: 0%;
+  }
+
+  .Header__actions {
+    display: none;
+  }
+
+  .Header__links ul li.register a {
+    display: block;
+  }
+
+  .Ham__User {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Ham__User .Handburger__Menu {
+    margin-left: 1rem;
+    margin-top: 12px;
+  }
+
+  .Ham__User .userProfile {
+    display: block;
+  }
+
+  .userProfile > .userCircle {
+    height: 35px;
+    width: 35px;
+    font-size: 18px;
+    margin-top: 6px;
+  }
+
+  .Header {
+    padding: 1rem 2rem;
+  }
+  /* Animation */
+
+  .scale-up-center {
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+      both;
+    animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  }
+
+  .scale-down-center {
+    -webkit-animation: scale-down-center 0.4s
+      cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: scale-down-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @-webkit-keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+  }
+  @keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+    100% {
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5);
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* .Header__links {
+    display: none;
+  } */
+}
+
+.userProfile {
+  position: relative;
+}
+
+.userCircle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--header-action-text-color);
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  font-family: "saira", sans-serif;
+  cursor: pointer;
+
+  z-index: 2;
+
+  text-transform: capitalize;
+}
+
+.userDetails {
+  /* height: 200px; */
+  width: 200px;
+  background-color: var(--text-color);
+  border-radius: 5px;
+  padding-bottom: 1rem;
+
+  position: absolute;
+  z-index: 1;
+  left: -100px;
+  top: 0;
+
+  font-family: "saira", sans-serif;
+
+  box-shadow: 0px 0px 5px var(--header-action-text-color);
+  display: none;
+}
+
+.userDetails .userCircle {
+  margin: 0.5rem auto 0.2rem;
+}
+
+.userDetails .userDetails__name {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.userCircle:hover + .userDetails {
+  display: block;
+}
+.userDetails:hover {
+  display: block;
+}

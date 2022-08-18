@@ -1,0 +1,17 @@
+.input__file__div {
+  display: flex;
+  align-items: center;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
+.input-file-button {
+  padding: 0.5rem 1rem;
+  font-family: "poppins", sans-serif;
+  font-size: 16px;
+}
+
+.input-file-text {
+  margin-left: 5px;
+}

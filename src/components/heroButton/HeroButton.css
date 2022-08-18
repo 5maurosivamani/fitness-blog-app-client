@@ -1,0 +1,18 @@
+.Blog__button {
+  margin-top: 1rem;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 2px solid white;
+  box-shadow: 0px 0px 6px black;
+
+  font-family: "saira", sans-serif;
+  vertical-align: middle;
+}
+
+.Blog__button:hover {
+  opacity: 0.5;
+}

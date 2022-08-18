@@ -1,0 +1,17 @@
+.IconLink {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  color: var(--header-action-text-color);
+
+  padding: 10px 20px;
+}
+
+.IconLink i {
+  margin-right: 10px;
+}
+
+.IconLink:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}

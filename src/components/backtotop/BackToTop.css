@@ -1,0 +1,28 @@
+.back-to-top {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--primary-color);
+
+  position: fixed;
+  right: 1rem;
+  bottom: 2rem;
+
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media screen and (max-width: 700px) {
+  .back-to-top {
+    background-color: var(--header-action-text-color);
+    color: var(--text-color);
+    right: 1.5rem;
+  }
+}

@@ -1,0 +1,30 @@
+.greybox__design {
+  height: 20px;
+  background-color: #b6b5b5;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.greybox__design::after {
+  content: "";
+  background-color: #b6b5b5;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0% 100%, 100% 0);
+}
+
+.greybox__design::before {
+  content: "";
+  background-color: #b6b5b5;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 99%, 100% 0);
+}
