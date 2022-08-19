@@ -1,1 +1,1 @@
-export const serverUrl = "https://fitness-blog-app-server.herokuapp.com/";
+export const serverUrl = "http://localhost:5000/";
