@@ -27,6 +27,8 @@ function App() {
 
   axios.defaults.withCredentials = true;
 
+  console.log("redered");
+
   const getDatas = async () => {
     console.log("rerendered");
 
