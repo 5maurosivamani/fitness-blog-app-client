@@ -28,6 +28,8 @@ function App() {
   axios.defaults.withCredentials = true;
 
   const getDatas = async () => {
+    console.log("rerendered");
+
     await axios
       .get(serverUrl + "users/login")
       .then((response) => {
