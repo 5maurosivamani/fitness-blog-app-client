@@ -27,15 +27,13 @@ function App() {
 
   axios.defaults.withCredentials = true;
 
-  console.log("redered");
-
   const getDatas = async () => {
-    console.log("rerendered");
-
     await axios
       .get(serverUrl + "users/login")
       .then((response) => {
         setLoginDetails(response.data);
+
+        console.log(response.data);
 
         if (response.data.loggedIn) {
           setLoggedIn(true);
