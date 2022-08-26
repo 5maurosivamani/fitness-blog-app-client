@@ -28,15 +28,30 @@ function App() {
   axios.defaults.withCredentials = true;
 
   const getDatas = async () => {
+    const token = window.localStorage.getItem("authToken");
+
     await axios
-      .get(serverUrl + "users/login")
+      .get(serverUrl + "users/auth", {
+        headers: {
+          "x-access-token": token,
+        },
+      })
       .then((response) => {
-        setLoginDetails(response.data);
+        const username = window.localStorage.getItem("userName");
+        const userid = window.localStorage.getItem("userId");
 
-        console.log(response.data);
-
-        if (response.data.loggedIn) {
+        if (response.data.auth) {
           setLoggedIn(true);
+
+          const userDetails = {
+            user: {
+              username,
+              userid,
+            },
+            loggedIn: true,
+          };
+
+          setLoginDetails(userDetails);
         } else {
           setLoggedIn(false);
         }

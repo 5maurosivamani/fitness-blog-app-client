@@ -53,9 +53,15 @@ function Login() {
           const resData = response.data;
           const status = resData.status;
 
+          console.log(resData);
+
           if (status === "invalid-user" || status === "invalid-password") {
             setAlertMessage("Invalid Username Or Password!");
           } else if (status === "valid") {
+            window.localStorage.setItem("authToken", resData.token);
+            window.localStorage.setItem("userName", resData.username);
+            window.localStorage.setItem("userId", resData.userid);
+
             setLoginSuccess(true);
 
             setTimeout(() => {

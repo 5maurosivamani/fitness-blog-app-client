@@ -17,16 +17,11 @@ function Header() {
   const logoutVisibility = loggedIn ? { display: "none" } : { display: "" };
 
   const handleLogout = async () => {
-    await axios
-      .delete("http://localhost:5000/users/logout")
-      .then((response) => {
-        if (response.data) {
-          window.location.reload();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    window.localStorage.removeItem("userName");
+    window.localStorage.removeItem("userId");
+    window.localStorage.removeItem("authToken");
+
+    window.location.reload();
   };
 
   window.addEventListener("resize", () => {
