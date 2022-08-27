@@ -99,7 +99,7 @@ function CreateNewBlog({ display, closeDiv }) {
         userid,
       };
 
-      if (page === "new" && userid != "" && && userid != null) {
+      if (page === "new" && userid != "" && userid != null) {
         axios
           .post(serverUrl + "posts/new", postData)
           .then(async (response) => {
