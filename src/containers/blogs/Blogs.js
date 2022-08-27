@@ -53,7 +53,46 @@ function Blogs() {
       buttons: [
         {
           label: "Yes",
-          onClick: () => true,
+          onClick: async () => {
+            const axiosLink = serverUrl + "posts/" + postId;
+
+            const filtered = posts.filter((post) => {
+              if (post._id !== postId) {
+                return post;
+              }
+            });
+
+            setPosts((previousPosts) => {
+              return posts.filter((post) => {
+                if (post._id !== postId) {
+                  return post;
+                }
+              });
+            });
+
+            await axios
+              .delete(axiosLink)
+              .then((response) => {
+                // console.log(response.data);
+
+                // const scrolled = document.documentElement.scrollTop;
+                // window.scrollTo({
+                //   top: 0,
+                //   behavior: "smooth",
+                // });
+
+                setDeleteSuccess(true);
+
+                setTimeout(() => {
+                  setDeleteSuccess(false);
+                  navigate("/blogs");
+                  // window.location.reload();
+                }, 1000);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
         },
         {
           label: "No",
@@ -61,51 +100,6 @@ function Blogs() {
         },
       ],
     });
-
-    if (confirm !== true) {
-      return;
-    } else {
-      console.log(confirm);
-    }
-
-    const axiosLink = serverUrl + "posts/" + postId;
-
-    const filtered = posts.filter((post) => {
-      if (post._id !== postId) {
-        return post;
-      }
-    });
-
-    setPosts((previousPosts) => {
-      return posts.filter((post) => {
-        if (post._id !== postId) {
-          return post;
-        }
-      });
-    });
-
-    await axios
-      .delete(axiosLink)
-      .then((response) => {
-        // console.log(response.data);
-
-        // const scrolled = document.documentElement.scrollTop;
-        // window.scrollTo({
-        //   top: 0,
-        //   behavior: "smooth",
-        // });
-
-        setDeleteSuccess(true);
-
-        setTimeout(() => {
-          setDeleteSuccess(false);
-          navigate("/blogs");
-          // window.location.reload();
-        }, 1000);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   return (
