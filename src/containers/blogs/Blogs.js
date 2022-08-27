@@ -48,7 +48,7 @@ function Blogs() {
 
   const handleDelete = async (postId) => {
     const confirm = await confirmAlert({
-      title: "Confirm to submit",
+      title: "Confirm to delete",
       message: "Are you sure to do this.",
       buttons: [
         {
@@ -60,14 +60,6 @@ function Blogs() {
               if (post._id !== postId) {
                 return post;
               }
-            });
-
-            setPosts((previousPosts) => {
-              return posts.filter((post) => {
-                if (post._id !== postId) {
-                  return post;
-                }
-              });
             });
 
             await axios
@@ -83,8 +75,18 @@ function Blogs() {
 
                 setDeleteSuccess(true);
 
-                setTimeout(() => {
+                setTimeout(async () => {
                   setDeleteSuccess(false);
+
+                  setPosts(filtered);
+
+                  // await setPosts((previousPosts) => {
+                  //   return posts.filter((post) => {
+                  //     if (post._id !== postId) {
+                  //       return post;
+                  //     }
+                  //   });
+                  // });
                   navigate("/blogs");
                   // window.location.reload();
                 }, 1000);
