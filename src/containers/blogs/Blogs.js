@@ -18,8 +18,8 @@ import {
 function Blogs() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(async () => {
-    await axios
+  useEffect(() => {
+    axios
       .get(serverUrl + "posts")
       .then((response) => {
         setPosts(response.data);
