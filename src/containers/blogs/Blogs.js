@@ -45,7 +45,11 @@ function Blogs() {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const handleDelete = async (postId) => {
-    console.log(postId);
+    const confirm = confirm("Do you want to Delete this Blog?");
+    if (confirm != true) {
+      return;
+    }
+
     const axiosLink = serverUrl + "posts/" + postId;
 
     const filtered = posts.filter((post) => {
