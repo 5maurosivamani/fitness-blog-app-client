@@ -15,11 +15,11 @@ import {
   SuccessAlert,
 } from "../../components";
 
-async function Blogs() {
+function Blogs() {
   const [posts, setPosts] = useState([]);
 
-  await useEffect(() => {
-    axios
+  useEffect(async () => {
+    await axios
       .get(serverUrl + "posts")
       .then((response) => {
         setPosts(response.data);
