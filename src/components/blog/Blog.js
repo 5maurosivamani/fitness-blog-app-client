@@ -34,7 +34,7 @@ function Blog({
               iconClass="fas fa-trash"
               handleClick={() => {
                 const confirm = confirm("Do you want to Delete this Blog?");
-                if (confirm) {
+                if (confirm === true) {
                   handleDelete(postId);
                 }
               }}
