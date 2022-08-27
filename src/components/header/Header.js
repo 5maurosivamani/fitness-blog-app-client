@@ -1,10 +1,10 @@
-import { React, useContext, useEffect, useState } from "react";
+import { React, useContext, useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { LoginStatusContext, LoginInfo } from "../../App";
 
 import IconLink from "../icon_link/IconLink";
-import axios from "axios";
+// import axios from "axios";
 
 function Header() {
   const loggedIn = useContext(LoginStatusContext);

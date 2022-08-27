@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Blog.css";
 
 import { HeroButton } from "../../components";
+import { serverUrl } from "../../config";
 
 function Blog({
   blogTitle,
@@ -18,7 +19,7 @@ function Blog({
       <p className="Blog__upload-details">{blogDetails}</p>
       <div className="Blog__image-and_buttons">
         <div className="Blog__image">
-          <img src={"/images/" + blogImage} alt="Flexibility" />
+          <img src={serverUrl + "images/" + blogImage} alt="Flexibility" />
         </div>
         {button === "false" ? null : (
           <div className="buttons">
