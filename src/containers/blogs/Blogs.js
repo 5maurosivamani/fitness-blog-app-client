@@ -64,6 +64,8 @@ function Blogs() {
 
     if (confirm !== true) {
       return;
+    } else {
+      console.log(confirm);
     }
 
     const axiosLink = serverUrl + "posts/" + postId;
