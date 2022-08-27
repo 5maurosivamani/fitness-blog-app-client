@@ -47,7 +47,7 @@ function Blogs() {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const handleDelete = async (postId) => {
-    confirmAlert({
+    const confirm = await confirmAlert({
       title: "Confirm to submit",
       message: "Are you sure to do this.",
       buttons: [
@@ -61,6 +61,10 @@ function Blogs() {
         },
       ],
     });
+
+    if (confirm !== true) {
+      return;
+    }
 
     const axiosLink = serverUrl + "posts/" + postId;
 
