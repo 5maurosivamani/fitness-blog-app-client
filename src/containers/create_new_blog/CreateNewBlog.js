@@ -87,14 +87,19 @@ function CreateNewBlog({ display, closeDiv }) {
     if (formValidation()) {
       const date = new Date();
 
+      const username = window.localStorage.getItem("userName");
+      const userid = window.localStorage.getItem("userId");
+
       const postData = {
         title: blogTitle,
         content: blogContent,
         image: blogImage,
         date: date,
+        username,
+        userid,
       };
 
-      if (page === "new") {
+      if (page === "new" && userid != "" && && userid != null) {
         axios
           .post(serverUrl + "posts/new", postData)
           .then(async (response) => {
