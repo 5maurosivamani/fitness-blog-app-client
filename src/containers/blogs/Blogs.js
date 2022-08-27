@@ -4,6 +4,8 @@ import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import "./Blogs.css";
 import { serverUrl } from "../../config";
+import { confirmAlert } from "react-confirm-alert"; // Import
+import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import {
   Blog,
   Header,
@@ -45,10 +47,20 @@ function Blogs() {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const handleDelete = async (postId) => {
-    const confirm = confirm("Do you want to Delete this Blog?");
-    if (confirm != true) {
-      return;
-    }
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => true,
+        },
+        {
+          label: "No",
+          onClick: () => false,
+        },
+      ],
+    });
 
     const axiosLink = serverUrl + "posts/" + postId;
 
