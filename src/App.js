@@ -86,7 +86,7 @@ function App() {
       <LoginStatusContext.Provider value={loggedIn}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={homeRoute} />
+            <Route path="/" element={loggedIn ? homeRoute : blogsRoute} />
             <Route path="/blogs" element={blogsRoute} />
             <Route path="/about" element={aboutRoute} />
             <Route path="/contact" element={contactRoute} />
