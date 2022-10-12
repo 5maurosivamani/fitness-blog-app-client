@@ -13,13 +13,29 @@ function Blog({
   button,
   handleDelete,
 }) {
+  function imageExists(image_url) {
+    var http = new XMLHttpRequest();
+
+    http.open("HEAD", image_url, false);
+    http.send();
+
+    return http.status != 404;
+  }
+
   return (
     <div className="Blog">
       <h3>{blogTitle}</h3>
       <p className="Blog__upload-details">{blogDetails}</p>
       <div className="Blog__image-and_buttons">
         <div className="Blog__image">
-          <img src={serverUrl + "images/" + blogImage} alt="Flexibility" />
+          <img
+            src={
+              imageExists(`${serverUrl}images/${blogImage}`)
+                ? `${serverUrl}images/${blogImage}`
+                : `${serverUrl}images/default.jpeg`
+            }
+            alt="Flexibility"
+          />
         </div>
         {button === "false" ? null : (
           <div className="buttons">
