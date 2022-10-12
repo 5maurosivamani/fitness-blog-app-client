@@ -68,12 +68,14 @@ function App() {
   }, []);
 
   const homeRoute = loggedIn === true ? <Home /> : <Login />;
-  const blogsRoute = loggedIn === true ? <Blogs /> : <Login />;
+  // const blogsRoute = loggedIn === true ? <Blogs /> : <Login />;
+  const blogsRoute = <Blogs />;
   const aboutRoute = loggedIn === true ? <About /> : <Login />;
   const contactRoute = loggedIn === true ? <Contact /> : <Login />;
   const createNewBlogRoute = loggedIn === true ? <CreateNewBlog /> : <Login />;
-  const showIndividualblog =
-    loggedIn === true ? <ShowIndividualBlog /> : <Login />;
+  // const showIndividualblog =
+  //   loggedIn === true ? <ShowIndividualBlog /> : <Login />;
+  const showIndividualblog = <ShowIndividualBlog />;
 
   if (isLoading) {
     return <Loading />;

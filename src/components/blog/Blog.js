@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import "./Blog.css";
 
 import { HeroButton } from "../../components";
@@ -11,6 +12,7 @@ function Blog({
   postId,
   button,
   handleDelete,
+  LoggedIn,
 }) {
   function imageExists(image_url) {
     var http = new XMLHttpRequest();
@@ -22,7 +24,7 @@ function Blog({
   }
 
   return (
-    <div className="Blog">
+    <div className={LoggedIn ? `Blog` : `Blog not__logged-in`}>
       <h3>{blogTitle}</h3>
       <p className="Blog__upload-details">{blogDetails}</p>
       <div className="Blog__image-and_buttons">
@@ -36,7 +38,7 @@ function Blog({
             alt="Flexibility"
           />
         </div>
-        {button === "false" ? null : (
+        {button === "false" || LoggedIn === false ? null : (
           <div className="buttons">
             <HeroButton
               redirectTo={`/blogs/edit/${postId}`}

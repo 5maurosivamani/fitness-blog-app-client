@@ -80,7 +80,7 @@ function Header() {
           <li style={loginVisibility}>
             <Link to="/">Home</Link>
           </li>
-          <li style={loginVisibility}>
+          <li>
             <Link to="/blogs">Blogs</Link>
           </li>
           <li style={loginVisibility}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
@@ -6,6 +6,7 @@ import "./Blogs.css";
 import { serverUrl } from "../../config";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import { LoginStatusContext } from "../../App";
 import {
   Blog,
   Header,
@@ -16,6 +17,7 @@ import {
 } from "../../components";
 
 function Blogs() {
+  const LoggedIn = useContext(LoginStatusContext);
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -113,7 +115,13 @@ function Blogs() {
             <GreyboxDesign />
             <div className="Blogs_content-container_posts">
               <h1 className="page__heading">Blogs</h1>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+              <div
+                style={
+                  LoggedIn
+                    ? { display: "flex", justifyContent: "flex-end" }
+                    : { display: "none" }
+                }
+              >
                 <HeroButton
                   redirectTo="/blogs/new"
                   buttonValue="Create New"
@@ -139,6 +147,7 @@ function Blogs() {
                       blogImage={post.image}
                       key={uuidv4()}
                       handleDelete={handleDelete}
+                      LoggedIn={LoggedIn}
                     />
                   );
                 })
