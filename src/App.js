@@ -32,7 +32,8 @@ function App() {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin":
+          "http://fitness-blog-app-client.herokuapp.com/",
         "x-access-token": token,
       },
     };
