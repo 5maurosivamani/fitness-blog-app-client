@@ -77,7 +77,7 @@ function Header() {
               : "scale-down-center"
           }
         >
-          <li style={loginVisibility}>
+          <li>
             <Link to="/">Home</Link>
           </li>
           <li>
