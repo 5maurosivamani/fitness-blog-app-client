@@ -29,13 +29,15 @@ function App() {
 
   const getDatas = async () => {
     const token = window.localStorage.getItem("authToken");
-
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "x-access-token": token,
+      },
+    };
     await axios
-      .get(serverUrl + "users/auth", {
-        headers: {
-          "x-access-token": token,
-        },
-      })
+      .get(serverUrl + "users/auth", config)
       .then((response) => {
         const username = window.localStorage.getItem("userName");
         const userid = window.localStorage.getItem("userId");
