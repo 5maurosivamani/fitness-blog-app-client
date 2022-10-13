@@ -67,14 +67,11 @@ function App() {
     getDatas();
   }, []);
 
-  const homeRoute = loggedIn === true ? <Home /> : <Login />;
-  // const blogsRoute = loggedIn === true ? <Blogs /> : <Login />;
+  const homeRoute = <Home />;
   const blogsRoute = <Blogs />;
   const aboutRoute = loggedIn === true ? <About /> : <Login />;
   const contactRoute = loggedIn === true ? <Contact /> : <Login />;
   const createNewBlogRoute = loggedIn === true ? <CreateNewBlog /> : <Login />;
-  // const showIndividualblog =
-  //   loggedIn === true ? <ShowIndividualBlog /> : <Login />;
   const showIndividualblog = <ShowIndividualBlog />;
 
   if (isLoading) {
@@ -86,7 +83,7 @@ function App() {
       <LoginStatusContext.Provider value={loggedIn}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={loggedIn ? homeRoute : blogsRoute} />
+            <Route path="/" element={homeRoute} />
             <Route path="/blogs" element={blogsRoute} />
             <Route path="/about" element={aboutRoute} />
             <Route path="/contact" element={contactRoute} />
