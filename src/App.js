@@ -37,8 +37,11 @@ function App() {
         "x-access-token": token,
       },
     };
+
+    const data = {};
+
     await axios
-      .get(serverUrl + "users/auth", config)
+      .get(serverUrl + "users/auth", data, config)
       .then((response) => {
         const username = window.localStorage.getItem("userName");
         const userid = window.localStorage.getItem("userId");
