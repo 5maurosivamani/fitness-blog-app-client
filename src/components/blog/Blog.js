@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import "./Blog.css";
 
 import { HeroButton } from "../../components";
@@ -15,12 +14,14 @@ function Blog({
   LoggedIn,
 }) {
   function imageExists(image_url) {
-    var http = new XMLHttpRequest();
+    const http = new XMLHttpRequest();
 
-    http.open("HEAD", image_url, false);
+    http.open("GET", image_url, false);
     http.send();
 
-    return http.status !== 404;
+    const res = JSON.parse(http.response);
+
+    return res.status !== 404;
   }
 
   return (
