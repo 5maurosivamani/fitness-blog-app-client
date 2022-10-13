@@ -29,19 +29,13 @@ function App() {
 
   const getDatas = async () => {
     const token = window.localStorage.getItem("authToken");
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":
-          "http://fitness-blog-app-client.herokuapp.com/",
-        "x-access-token": token,
-      },
-    };
-
-    const data = {};
 
     await axios
-      .get(serverUrl + "users/auth", data, config)
+      .get(serverUrl + "users/auth", {
+        headers: {
+          "x-access-token": token,
+        },
+      })
       .then((response) => {
         const username = window.localStorage.getItem("userName");
         const userid = window.localStorage.getItem("userId");
