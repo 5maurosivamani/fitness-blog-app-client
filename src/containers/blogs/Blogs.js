@@ -28,14 +28,13 @@ function Blogs() {
         .get(serverUrl + "posts")
         .then((response) => {
           setPosts(response.data);
+          setIsLoading(false);
         })
         .catch((err) => console.log(err));
     };
 
     fetchPosts();
-
-    setIsLoading(false);
-  }, []);
+  }, [posts]);
 
   const capitalize = (str) => {
     return str[0].toUpperCase() + str.slice(1);
