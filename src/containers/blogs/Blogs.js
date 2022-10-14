@@ -14,19 +14,27 @@ import {
   HeroButton,
   BackToTop,
   SuccessAlert,
+  Loading,
 } from "../../components";
 
 function Blogs() {
   const LoggedIn = useContext(LoginStatusContext);
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(serverUrl + "posts")
-      .then((response) => {
-        setPosts(response.data);
-      })
-      .catch((err) => console.log(err));
+    const fetchPosts = async () => {
+      await axios
+        .get(serverUrl + "posts")
+        .then((response) => {
+          setPosts(response.data);
+        })
+        .catch((err) => console.log(err));
+    };
+
+    fetchPosts();
+
+    setIsLoading(false);
   }, []);
 
   const capitalize = (str) => {
@@ -105,6 +113,10 @@ function Blogs() {
       ],
     });
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>

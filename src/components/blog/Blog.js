@@ -1,7 +1,7 @@
 import "./Blog.css";
 
 import { HeroButton } from "../../components";
-import { serverUrl } from "../../config";
+import { serverUrl, baseUrl } from "../../config";
 
 function Blog({
   blogTitle,
@@ -19,9 +19,7 @@ function Blog({
     http.open("GET", image_url, false);
     http.send();
 
-    const res = JSON.parse(http.response);
-
-    return res.status !== 404;
+    return http.status !== 404;
   }
 
   return (
@@ -33,10 +31,11 @@ function Blog({
           <img
             src={
               imageExists(`${serverUrl}images/${blogImage}`)
-                ? `${serverUrl}images/${blogImage}`
-                : `${serverUrl}images/default.jpeg`
+                ? `/images/${blogImage}`
+                : `/images/default.jpeg`
             }
             alt="Flexibility"
+            img-className={`${serverUrl}images/${blogImage}`}
           />
         </div>
         {button === "false" || LoggedIn === false ? null : (
