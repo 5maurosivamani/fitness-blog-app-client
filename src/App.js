@@ -10,6 +10,7 @@ import {
   Register,
   CreateNewBlog,
   ShowIndividualBlog,
+  Tableview
 } from "./containers";
 import { Loading } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -73,6 +74,7 @@ function App() {
   const contactRoute = loggedIn === true ? <Contact /> : <Login />;
   const createNewBlogRoute = loggedIn === true ? <CreateNewBlog /> : <Login />;
   const showIndividualblog = <ShowIndividualBlog />;
+  const tableView = <Tableview />;
 
   if (isLoading) {
     return <Loading />;
@@ -90,6 +92,7 @@ function App() {
             <Route path="/blogs/new" element={createNewBlogRoute} />
             <Route path="/blogs/edit/:id" element={createNewBlogRoute} />
             <Route path="/blogs/individual/:id" element={showIndividualblog} />
+            <Route path="/blogs/tableview" element={tableView} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

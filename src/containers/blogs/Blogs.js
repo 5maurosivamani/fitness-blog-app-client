@@ -34,7 +34,7 @@ function Blogs() {
     };
 
     fetchPosts();
-  }, [posts]);
+  }, []);
 
   const capitalize = (str) => {
     return str[0].toUpperCase() + str.slice(1);
@@ -56,7 +56,7 @@ function Blogs() {
   const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const handleDelete = async (postId) => {
-    const confirm = await confirmAlert({
+    await confirmAlert({
       title: "Confirm to delete",
       message: "Are you sure to do this.",
       buttons: [
@@ -65,11 +65,7 @@ function Blogs() {
           onClick: async () => {
             const axiosLink = serverUrl + "posts/" + postId;
 
-            const filtered = posts.filter((post) => {
-              if (post._id !== postId) {
-                return post;
-              }
-            });
+            const filtered = posts.filter((post) => post._id !== postId);
 
             await axios
               .delete(axiosLink)
@@ -133,6 +129,12 @@ function Blogs() {
                     : { display: "none" }
                 }
               >
+                <HeroButton
+                  redirectTo="/blogs/tableview"
+                  buttonValue="Table View"
+                  iconClass="fa-solid fa-table"
+                  className="table-view-button"
+                />
                 <HeroButton
                   redirectTo="/blogs/new"
                   buttonValue="Create New"

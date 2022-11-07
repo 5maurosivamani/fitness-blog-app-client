@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./CreateNewBlog.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { serverUrl } from "../../config";
+import React, { useEffect, useState, useMemo } from "react";
 
+import "./CreateNewBlog.css";
 import {
   GreyboxDesign,
   Input,
@@ -13,6 +10,10 @@ import {
   InputFile,
   SuccessAlert,
 } from "../../components";
+import { serverUrl } from "../../config";
+
+import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function CreateNewBlog({ display, closeDiv }) {
   const [blogTitle, setBlogTitle] = useState("");
@@ -38,6 +39,14 @@ function CreateNewBlog({ display, closeDiv }) {
   // Edit Page Functionality
   const postIdObj = useParams("id");
   const postId = postIdObj.id;
+
+  function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
+  let query = useQuery();
 
   useEffect(() => {
     if (postId) {
@@ -122,7 +131,9 @@ function CreateNewBlog({ display, closeDiv }) {
                 });
 
               setTimeout(() => {
-                navigate("/blogs");
+                query.get("back") === "table"
+                  ? navigate("/blogs/tableview")
+                  : navigate("/blogs");
               }, 1000);
             }
           })
@@ -154,7 +165,9 @@ function CreateNewBlog({ display, closeDiv }) {
                   });
 
                 setTimeout(() => {
-                  navigate("/blogs");
+                  query.get("back") === "table"
+                    ? navigate("/blogs/tableview")
+                    : navigate("/blogs");
                 }, 1000);
               }
             })
@@ -212,7 +225,15 @@ function CreateNewBlog({ display, closeDiv }) {
       <div className="create__new__blog" style={{ display: display }}>
         <div className="create__new__blog-container">
           <GreyboxDesign />
-          <Link to="/blogs" className="close-btn" onClick={closeDiv}>
+          <Link
+            to={
+              query.get("back") || query.get("back") === "table"
+                ? "/blogs/tableview"
+                : "/blogs"
+            }
+            className="close-btn"
+            onClick={closeDiv}
+          >
             <i className="fa-solid fa-rectangle-xmark"></i>
           </Link>
           <div className="create__new__blog-container_content">

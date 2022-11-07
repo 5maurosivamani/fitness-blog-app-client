@@ -47,3 +47,7 @@
 .Blogs .success__alert {
   position: fixed;
 }
+
+
+.Blog__button:nth-child(1){
+  margin-right: 0.5rem;}

@@ -6,6 +6,7 @@ import Login from "./login/Login";
 import Register from "./register/Register";
 import CreateNewBlog from "./create_new_blog/CreateNewBlog";
 import ShowIndividualBlog from "./show_individual_blog/ShowIndividualBlog";
+import Tableview from "./table_view/Tableview";
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Register,
   CreateNewBlog,
   ShowIndividualBlog,
+  Tableview
 };

@@ -1,7 +1,7 @@
 import "./Blog.css";
 
 import { HeroButton } from "../../components";
-import { serverUrl, baseUrl } from "../../config";
+import { serverUrl, baseUrl } from "../../config.js";
 
 function Blog({
   blogTitle,
@@ -13,7 +13,8 @@ function Blog({
   handleDelete,
   LoggedIn,
 }) {
-  function imageExists(image_url) {
+  function imageExists(imageName) {
+    const image_url = `${serverUrl}images/${imageName}`;
     const http = new XMLHttpRequest();
 
     http.open("GET", image_url, false);
@@ -29,13 +30,10 @@ function Blog({
       <div className="Blog__image-and_buttons">
         <div className="Blog__image">
           <img
-            src={
-              imageExists(`${serverUrl}images/${blogImage}`)
-                ? `/images/${blogImage}`
-                : `/images/default.jpeg`
-            }
+            src={`${baseUrl}images/${
+              imageExists(blogImage) ? blogImage : "default.jpeg"
+            }`}
             alt="Flexibility"
-            img-className={`${serverUrl}images/${blogImage}`}
           />
         </div>
         {button === "false" || LoggedIn === false ? null : (

@@ -1,0 +1,38 @@
+.Tableview .Header {
+    background: var(--home-gradient-bg);
+  }
+  
+  .Tableview__container {
+    min-height: calc(100vh - 94px);
+    width: 100%;
+    background-color: var(--primary-color);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .Tableview__container-box {
+    min-height: calc(100vh - calc(94px + 1rem));
+    margin: 1rem 6rem 0;
+    background: var(--text-color);
+    background-size: 100% 100vh;
+  }
+  
+  .Tableview__container-box_content {
+    margin: 2rem 2rem;
+
+  }
+  
+  @media screen and (max-width: 700px) {
+    .Tableview__container-box {
+      margin: 1rem 1rem 0 1rem;
+    }
+  
+    .Tableview__container-box_content {
+      margin: 1rem;
+    }
+  }
+
+  .table thead th:last-child{
+    width: 100px;
+  }
+  

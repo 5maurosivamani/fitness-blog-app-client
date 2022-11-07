@@ -1,106 +1,114 @@
-.Home {
-  min-height: 100vh;
-  background-image: var(--home-gradient-bg);
-  position: relative;
-  overflow: hidden;
+.carousel .slide:nth-child(2) .img {
+  background-image: url("../../images/1.jpg");
+  background-position: center;
 }
 
-.Home__texture {
-  background: url(../../images/large-leather.png);
-  min-height: 100vh;
-  background-repeat: repeat;
-  background-size: 120px 100px;
+.carousel .slide:nth-child(3) .img {
+  background-image: url("../../images/2.jpg");
+  background-position: center;
+}
+.carousel .slide:nth-child(4) .img {
+  background-image: url("../../images/3.jpg");
+  background-position: center;
 }
 
-.Home img {
+.carousel .slide .img {
+  /* Center and scale the image nicely */
+  width: 100%;
+  min-height: 635px;
+  height: calc(100vh - 89px);
+  background-size: cover;
+  background-color: rgb(0 37 35 / 80%);
+  background-blend-mode: saturation;
+}
+
+.carousel .slide .legend {
+  background-color: transparent;
+  font-family: "saira";
+  font-size: 20px;
+}
+
+.carousel-status {
+  font-family: "saira";
+}
+
+.Home__content {
+  padding: 2rem;
+  font-family: "saira";
+
   position: absolute;
-  right: -100px;
-  bottom: -7%;
-  width: 420px;
-  height: 540px;
-  z-index: 1;
+  top: 30%;
+  left: 7%;
+  color: var(--text-color);
 }
 
-.Home__content-text {
-  padding: 4rem 4rem;
-}
-
-.Home__content-text h1 {
+.Home__content h1 {
   font-family: "Teko";
   font-weight: 700;
-  font-size: 80px;
-  line-height: 98px;
+  font-size: 4rem;
 }
 
-.Home__content-text h1:nth-child(1) {
-  color: var(--header-action-text-color);
-  text-shadow: 0px 0px 4px var(--text-color);
+.Home__content p {
+  margin-bottom: 4rem;
+  font-size: 1.2rem;
 }
 
-.Home__content-text h1:nth-child(2) {
-  color: var(--text-color);
-}
-
-.Home__content-text p {
-  font-family: "Saira";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 38px;
-
-  color: var(--text-color);
-}
-
-.Home__content-text a {
-  display: block;
-  text-decoration: none;
-  margin-top: 4rem;
-  padding: 0.5rem 0.8rem;
-  background-color: rgb(1, 59, 55);
-  width: 200px;
-  text-align: center;
-  font-family: "Saira";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-
-  color: var(--text-color);
-  border: 2px solid var(--text-color);
-  /* clip-path: polygon(16% 0, 100% 0%, 86% 100%, 0% 100%); */
-}
-
-.Home__content-text a:hover {
-  /* color: var(--header-action-text-color);
-  background-color: var(--text-color);
-  border: 3px solid var(--header-action-text-color); */
-  opacity: 0.7;
-  transition: 0.3s;
-}
-
-@media screen and (max-width: 1200px) {
-  .Home img {
-    position: absolute;
-    right: -100px;
-    bottom: -7%;
-    width: 420px;
-    height: 500px;
-    z-index: 1;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .Home img {
+@media screen and (max-width: 800px) {
+  .control-arrow {
     display: none;
+  }
+
+  .Home__content p {
+    margin-bottom: 1rem;
   }
 }
 
 @media screen and (max-width: 700px) {
-  .Home__content-text h1 {
-    font-size: 60px;
-    line-height: 75px;
+  .Home__content h1 {
+    font-family: "Teko";
+    font-weight: 700;
+    font-size: 2.5rem;
   }
 
-  .Home__content-text {
-    padding: 4rem 2rem 0;
+  .Home__content p {
+    margin-bottom: 1rem;
   }
+
+  .Home__content .Blog__button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .Home__content h1 {
+    font-family: "Teko";
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  .Home__content p {
+    margin-bottom: 0.5rem;
+  }
+
+  .Home__content .Blog__button {
+    padding: 3px 5px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .carousel,
+  .carousel .slide,
+  .carousel .slide .img {
+    min-height: calc(100vh - 80px);
+  }
+}
+
+.Home__content-text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 3rem;
 }

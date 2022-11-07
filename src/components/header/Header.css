@@ -122,7 +122,7 @@
     background-color: var(--header-action-text-color);
     padding: 1rem 1.8rem;
     /* padding-left: 1rem; */
-    left: -2.5rem;
+    left: -3.2rem;
     top: 4rem;
     z-index: 1000;
 
@@ -302,4 +302,10 @@
 }
 .userDetails:hover {
   display: block;
+}
+
+@media screen and (max-width: 450px) {
+  .Header__logo h1 {
+    font-size: 2rem;
+  }
 }

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "./SuccessAlert.css";
 import successCircle from "../../images/done-icon.png";
 
