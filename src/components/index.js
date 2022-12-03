@@ -10,6 +10,7 @@ import InputFile from "./input_file/InputFile";
 import Loading from "./loading/Loading";
 import IconLink from "./icon_link/IconLink";
 import BackToTop from "./backtotop/BackToTop";
+import Carousel from "./carousel/Carousel";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   Loading,
   IconLink,
   BackToTop,
+  Carousel,
 };

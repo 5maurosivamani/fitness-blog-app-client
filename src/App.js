@@ -1,3 +1,6 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/js/bootstrap.js";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
@@ -8,9 +11,10 @@ import {
   Contact,
   Login,
   Register,
+  CreatePost,
   CreateNewBlog,
-  ShowIndividualBlog,
-  Tableview
+  ReadMore,
+  Tableview,
 } from "./containers";
 import { Loading } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -70,10 +74,10 @@ function App() {
 
   const homeRoute = <Home />;
   const blogsRoute = <Blogs />;
-  const aboutRoute = loggedIn === true ? <About /> : <Login />;
-  const contactRoute = loggedIn === true ? <Contact /> : <Login />;
-  const createNewBlogRoute = loggedIn === true ? <CreateNewBlog /> : <Login />;
-  const showIndividualblog = <ShowIndividualBlog />;
+  const aboutRoute = <About />;
+  const contactRoute = <Contact />;
+  const createPostRoute = loggedIn === true ? <CreateNewBlog /> : <Home />;
+  const readMoreRoute = <ReadMore />;
   const tableView = <Tableview />;
 
   if (isLoading) {
@@ -89,14 +93,14 @@ function App() {
             <Route path="/blogs" element={blogsRoute} />
             <Route path="/about" element={aboutRoute} />
             <Route path="/contact" element={contactRoute} />
-            <Route path="/blogs/new" element={createNewBlogRoute} />
-            <Route path="/blogs/edit/:id" element={createNewBlogRoute} />
-            <Route path="/blogs/individual/:id" element={showIndividualblog} />
+            <Route path="/blogs/new" element={createPostRoute} />
+            <Route path="/blogs/edit/:id" element={createPostRoute} />
+            <Route path="/blogs/readmore/:id" element={readMoreRoute} />
             <Route path="/blogs/tableview" element={tableView} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
           </Routes>
         </BrowserRouter>
+        <Login />
+        <Register />
       </LoginStatusContext.Provider>
     </LoginInfo.Provider>
   );

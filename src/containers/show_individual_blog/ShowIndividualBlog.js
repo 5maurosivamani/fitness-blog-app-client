@@ -11,6 +11,8 @@ import {
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 function ShowIndividualBlog() {
   const postId = useParams("id");
 
@@ -63,8 +65,9 @@ function ShowIndividualBlog() {
             <HeroButton
               redirectTo="/blogs"
               buttonValue="Back"
-              iconClass="fas fa-arrow-left"
               float="right"
+              icon={<ArrowBackIcon />}
+              start
             />
 
             {post !== null ? (

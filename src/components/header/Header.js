@@ -1,22 +1,15 @@
-import { React, useContext, useState } from "react";
-import "./Header.css";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { LoginStatusContext, LoginInfo } from "../../App";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import "./Header.css";
 
-import IconLink from "../icon_link/IconLink";
-// import axios from "axios";
+import { LoginStatusContext } from "../../App";
 
-function Header() {
+function Header({ activeLink }) {
   const loggedIn = useContext(LoginStatusContext);
-  const loginInfo = useContext(LoginInfo);
 
-  const [hamburgerClicked, setHamburgerClicked] = useState(false);
-
-  const loginVisibility = loggedIn ? { display: "" } : { display: "none" };
-
-  const logoutVisibility = loggedIn ? { display: "none" } : { display: "" };
-
-  const handleLogout = async () => {
+  const handleLogout = () => {
     window.localStorage.removeItem("userName");
     window.localStorage.removeItem("userId");
     window.localStorage.removeItem("authToken");
@@ -24,116 +17,91 @@ function Header() {
     window.location.reload();
   };
 
-  window.addEventListener("resize", () => {
-    setHamburgerClicked(false);
-  });
-
   return (
-    <div className="Header">
-      <div className="Header__logo">
-        <h1>FITNESS TODAY</h1>
-      </div>
-      <div className="Header__links ">
-        <div className="Ham__User">
-          <div
-            className="userProfile"
-            style={loginVisibility}
-            onMouseOver={() => {
-              setHamburgerClicked(false);
-            }}
-          >
-            <div className="userCircle">
-              {loginInfo.loggedIn && loginInfo.user.username.slice(0, 1)}
-            </div>
-            <div className="userDetails">
-              <div className="userCircle">
-                {loginInfo.loggedIn && loginInfo.user.username.slice(0, 1)}
-              </div>
-              <p className="userDetails__name">
-                {loginInfo.loggedIn && loginInfo.user.username}
-              </p>
-              <hr />
-              <IconLink
-                redirectLink="#"
-                linkText="Logout"
-                linkIcon="fas fa-sign-out"
-                handleClick={handleLogout}
-              />
-            </div>
-          </div>
-          <div
-            className="Handburger__Menu"
-            onClick={() => {
-              setHamburgerClicked((preVal) => !preVal);
-            }}
-          >
-            <i className="fas fa-stream"></i>
-          </div>
-        </div>
-        <ul
-          className={
-            hamburgerClicked === true
-              ? "scale-up-center active"
-              : "scale-down-center"
-          }
+    <nav className="navbar navbar-expand-lg navbar-dark bg-success p-3">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
+          <h1 className="h3 fw-bolder my-auto d-flex align-items-center">
+            FITNESS TODAY
+          </h1>
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/blogs">Blogs</Link>
-          </li>
-          <li style={loginVisibility}>
-            <Link to="/about">About</Link>
-          </li>
-          <li style={loginVisibility}>
-            <Link to="/contact">Contact</Link>
-          </li>
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ms-5">
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${activeLink === "home" && "active"}`}
+                aria-current="page"
+                to="/"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${activeLink === "blogs" && "active"}`}
+                aria-current="page"
+                to="/blogs"
+              >
+                Blogs
+              </Link>
+            </li>
 
-          <li style={logoutVisibility}>
-            <Link to="/register" className="login">
-              Register
-            </Link>
-          </li>
-          <li style={logoutVisibility}>
-            <Link to="/login" className="login">
-              Login
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="Header__actions">
-        <div className="cross-style">
-          <Link to="/register" style={logoutVisibility}>
-            Register
-          </Link>
-          <Link to="/login" style={logoutVisibility}>
-            Login
-          </Link>
-        </div>
+            <>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${activeLink === "about" && "active"}`}
+                  aria-current="page"
+                  to="/about"
+                >
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${activeLink === "contact" && "active"}`}
+                  aria-current="page"
+                  to="/contact"
+                >
+                  Contact
+                </Link>
+              </li>
+            </>
+          </ul>
 
-        <div className="userProfile" style={loginVisibility}>
-          <div className="userCircle">
-            {loginInfo.loggedIn && loginInfo.user.username.slice(0, 1)}
-          </div>
-          <div className="userDetails">
-            <div className="userCircle">
-              {loginInfo.loggedIn && loginInfo.user.username.slice(0, 1)}
-            </div>
-            <p className="userDetails__name">
-              {loginInfo.loggedIn && loginInfo.user.username}
-            </p>
-            <hr />
-            <IconLink
-              redirectLink="#"
-              linkText="Logout"
-              linkIcon="fas fa-sign-out"
-              handleClick={handleLogout}
-            />
-          </div>
+          {loggedIn ? (
+            <Link
+              className="btn btn-outline-light"
+              aria-current="page"
+              to="#"
+              onClick={handleLogout}
+            >
+              <LogoutIcon className="fs-5 my-auto" /> Log Out
+            </Link>
+          ) : (
+            <Link
+              className="btn btn-outline-light"
+              aria-current="page"
+              to="#"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModel"
+            >
+              <LoginIcon className="fs-5 my-auto" /> Log In
+            </Link>
+          )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

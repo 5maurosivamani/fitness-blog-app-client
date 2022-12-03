@@ -15,6 +15,9 @@ import { serverUrl } from "../../config";
 import { Link, useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
 
+// import SaveIcon from "@mui/icons-material/Save";
+import DoneIcon from "@mui/icons-material/Done";
+
 function CreateNewBlog({ display, closeDiv }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogContent, setBlogContent] = useState("");
@@ -277,7 +280,8 @@ function CreateNewBlog({ display, closeDiv }) {
               <HeroButton
                 buttonValue={buttonName}
                 redirectTo={buttonRedirect}
-                iconClass="fa-solid fa-check"
+                icon={<DoneIcon />}
+                start
                 handleClick={saveHandleClick}
               />
             </form>

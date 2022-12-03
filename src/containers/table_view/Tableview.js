@@ -19,6 +19,10 @@ import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import Pagination from "@mui/material/Pagination";
 
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import "./Tableview.css";
 
 function Tableview() {
@@ -109,13 +113,16 @@ function Tableview() {
               <HeroButton
                 redirectTo="/blogs/new?back=table"
                 buttonValue="Create new"
-                iconClass="fa-solid fa-plus"
+                icon={<LibraryAddIcon />}
+                bootstrapClass="me-2"
+                start={true}
               />
 
               <HeroButton
                 redirectTo="/blogs"
                 buttonValue="Back"
-                iconClass="fa-solid fa-arrow-left"
+                icon={<ArrowBackIcon />}
+                start={true}
               />
             </div>
 

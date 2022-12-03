@@ -1,93 +1,33 @@
 .Blog {
-  margin: 1rem auto 2rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-.Blog h3 {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  overflow: hidden;
+.Blog img {
+  width: 100%;
 }
 
-.Blog p {
-  font-family: "Poppins", sans-serif;
-  font-weight: normal;
-  font-size: 16px;
-}
-
-.Blog p.Blog__upload-details {
-  font-size: 12px;
-}
-
-.Blog__image {
-  border: 6px solid var(--primary-color);
-  background-color: black;
-  margin-top: 1rem;
-  text-align: center;
+.btn.rounded-btn {
+  border-radius: 50% !important;
   padding: 0;
+  height: 40px;
+  width: 40px;
 }
 
-.Blog__image img {
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  display: block;
-}
-
-.Blog__description {
-  margin-top: 1rem;
-  text-align: justify;
-}
-
-.Blog__image-and_buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.Blog__image-and_buttons .Blog__image {
-  width: 60%;
-}
-.Blog__image-and_buttons .buttons {
-  width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Blog__image-and_buttons .buttons a {
-  margin-left: 1rem;
-}
-
-.Blog.not__logged-in .Blog__image-and_buttons .Blog__image {
-  width: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-  .Blog__image-and_buttons .Blog__image {
-    width: 60%;
-  }
-
-  .Blog__image-and_buttons .buttons {
-    width: 40%;
-    /* flex-direction: column; */
+@media screen and (max-width: 768px) {
+  .Blog img {
+    border-radius: 0;
+    border-bottom-left-radius: var(--bs-border-radius-sm);
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: var(--bs-border-radius-sm);
   }
 }
 
-@media screen and (max-width: 900px) {
-  .Blog__image-and_buttons {
-    flex-direction: column;
-  }
-  .Blog__image-and_buttons .Blog__image {
-    width: 100%;
-  }
-
-  .Blog__image-and_buttons .buttons {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .Blog__image-and_buttons .buttons a:nth-child(1) {
-    margin-left: 0;
-  }
+.read-more {
+  border-radius: 0;
+  border-top-left-radius: var(--bs-border-radius-lg) !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: var(--bs-border-radius-lg) !important;
 }

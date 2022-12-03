@@ -1,53 +1,22 @@
 .Blogs {
-  position: relative;
-}
-.Blogs .Header {
-  background: var(--home-gradient-bg);
-}
-
-.Blogs__content {
+  background-color: rgba(217, 217, 217, 0.663);
   min-height: 100vh;
-  width: 100%;
-  padding: 2rem 6rem;
-  background-color: var(--primary-color);
-}
-.Blogs__content-container {
-  min-height: 100vh;
-  background-color: var(--text-color);
-  position: relative;
 }
 
-.Blogs_content-container_posts {
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--text-color);
-  padding: 1rem 3rem;
+.react-confirm-alert-overlay {
+  background: rgb(203, 255, 250);
 }
 
-.page__heading {
-  font-family: "Saira";
-  font-style: italic;
-  font-weight: 600;
-  font-size: 40.1879px;
-  line-height: 56px;
-
-  color: var(--primary-color);
-  border-bottom: 0.5px solid rgb(206, 205, 205);
+.react-confirm-alert-body > h1 {
+  color: var(--bs-green) !important;
 }
 
-@media screen and (max-width: 700px) {
-  .Blogs__content {
-    padding: 1rem 1rem;
-  }
-  .Blogs_content-container_posts {
-    padding: 1rem 1.5rem;
-  }
+.react-confirm-alert-button-group > button:nth-child(1) {
+  background: var(--bs-success) !important;
+  color: var(--bs-light) !important;
 }
 
-.Blogs .success__alert {
-  position: fixed;
+.react-confirm-alert-button-group > button:nth-child(2) {
+  background: var(--bs-gray-400) !important;
+  color: var(--bs-dark) !important;
 }
-
-
-.Blog__button:nth-child(1){
-  margin-right: 0.5rem;}

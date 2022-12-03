@@ -1,24 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+
+import "./Blogs.css";
+import { Header, Blog, BackToTop, Loading } from "../../components";
+import { serverUrl } from "../../config";
+import { LoginStatusContext } from "../../App";
+
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import "./Blogs.css";
-import { serverUrl } from "../../config";
+import { Link, useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-import { LoginStatusContext } from "../../App";
-import {
-  Blog,
-  Header,
-  GreyboxDesign,
-  HeroButton,
-  BackToTop,
-  SuccessAlert,
-  Loading,
-} from "../../components";
+
+import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 
 function Blogs() {
-  const LoggedIn = useContext(LoginStatusContext);
+  const loggedIn = useContext(LoginStatusContext);
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -52,13 +48,13 @@ function Blogs() {
 
     return event.toLocaleDateString("en-us", options);
   }
+
   const navigate = useNavigate();
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
 
   const handleDelete = async (postId) => {
     await confirmAlert({
-      title: "Confirm to delete",
-      message: "Are you sure to do this.",
+      // title: "Confirm to delete:",
+      message: "Are you sure to do this?",
       buttons: [
         {
           label: "Yes",
@@ -70,28 +66,9 @@ function Blogs() {
             await axios
               .delete(axiosLink)
               .then((response) => {
-                // console.log(response.data);
-
-                // const scrolled = document.documentElement.scrollTop;
-                // window.scrollTo({
-                //   top: 0,
-                //   behavior: "smooth",
-                // });
-
-                setDeleteSuccess(true);
-
                 setTimeout(async () => {
-                  setDeleteSuccess(false);
-
                   setPosts(filtered);
 
-                  // await setPosts((previousPosts) => {
-                  //   return posts.filter((post) => {
-                  //     if (post._id !== postId) {
-                  //       return post;
-                  //     }
-                  //   });
-                  // });
                   navigate("/blogs");
                   // window.location.reload();
                 }, 1000);
@@ -114,69 +91,39 @@ function Blogs() {
   }
 
   return (
-    <>
-      <div className="Blogs">
-        <Header />
-        <div className="Blogs__content">
-          <div className="Blogs__content-container">
-            <GreyboxDesign />
-            <div className="Blogs_content-container_posts">
-              <h1 className="page__heading">Blogs</h1>
-              <div
-                style={
-                  LoggedIn
-                    ? { display: "flex", justifyContent: "flex-end" }
-                    : { display: "none" }
-                }
-              >
-                <HeroButton
-                  redirectTo="/blogs/tableview"
-                  buttonValue="Table View"
-                  iconClass="fa-solid fa-table"
-                  className="table-view-button"
-                />
-                <HeroButton
-                  redirectTo="/blogs/new"
-                  buttonValue="Create New"
-                  iconClass="fa-solid fa-plus"
-                />
-              </div>
-              {posts.length === 0 ? (
-                <div className="Blog">
-                  <h3 style={{ textAlign: "center" }}>No Posts Found!</h3>
-                </div>
-              ) : (
-                posts.map((post, index) => {
-                  return (
-                    <Blog
-                      postId={post._id}
-                      blogTitle={post.title}
-                      blogDetails={
-                        showDate(post.date) +
-                        " | by " +
-                        capitalize(post.userName)
-                      }
-                      blogDescription={post.content.slice(0, 600) + "..."}
-                      blogImage={post.image}
-                      key={uuidv4()}
-                      handleDelete={handleDelete}
-                      LoggedIn={LoggedIn}
-                    />
-                  );
-                })
-              )}
-            </div>
+    <div className="Blogs">
+      <Header activeLink="blogs" />
+      <div className="container py-3">
+        {loggedIn && (
+          <div className="w-100 mb-3 text-end">
+            <Link to="/blogs/new" className="btn btn-success ">
+              Create new <LibraryAddIcon />
+            </Link>
           </div>
-        </div>
-        <BackToTop />
-        <SuccessAlert
-          success={deleteSuccess}
-          setSuccess={setDeleteSuccess}
-          successMessage="Successfully Deleted!"
-          style={{ top: "100%" }}
-        />
+        )}
+        {posts.length === 0 ? (
+          <div className="p-4 py-5 text-center bg-light rounded text-muted">
+            <h3>No Records found!</h3>
+          </div>
+        ) : (
+          posts.map((post, index) => (
+            <Blog
+              controls={loggedIn}
+              id={post._id}
+              title={post.title}
+              description={post.content}
+              createdBy={
+                showDate(post.date) + " | by " + capitalize(post.userName)
+              }
+              image={post.image}
+              key={uuidv4()}
+              handleDelete={handleDelete}
+            />
+          ))
+        )}
       </div>
-    </>
+      <BackToTop />
+    </div>
   );
 }
 
